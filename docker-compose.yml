@@ -1,0 +1,32 @@
+version: "3.3"
+
+services:
+  backend:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  db:
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  frontend:
+    build: ./react-front/front-client
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+    volumes:
+      - ./react-front/front-client:/user/src/app
+
+volumes:
+  postgres_data:
