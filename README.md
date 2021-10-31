@@ -104,39 +104,50 @@ para esse projeto foi usado 2 Dockerfiles que estão em diretórios diferentes, 
             
        mkdir react-front 
     
-   Dentro do bd-setup crie o arqui init.sql e o Dockerfile:
+   Dentro do react-front use o seguinte comando para instalar o utilitário para criar o projeto:
       
-       vi init.sql
+       npm install -g create-react-app 
        
-   Conteúdo do arquivo init.sql:
-       
-       CREATE USER wikiuser WITH password 'wiki1234';
+   crie o projeto:
+   
+       create-react-app front-client
 
-       ALTER USER wikiuser WITH SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN REPLICATION;
-
-       CREATE DATABASE wikijs WITH OWNER wikiuser;
-       
    Criando o Dockerfile:
   
-       vi init.sql
+       vi Dockerfille
+       
        
    Conteúdo do arquivo Dockerfile:
   
-       FROM postgres:11-alpine
-       COPY init.sql /docker-entrypoint-initdb.d/
-       LABEL CUSTON_BY="seunome"
-       
-       
+      FROM node:14-slim
 
-  
-   Acesse o diretório do wiki-setup para criar o Dockerfile da do serviço:
-   
-       cd ../wiki-setup
+      WORKDIR /user/src/app
+
+      COPY ./package.json ./
+
+      COPY ./package-lock.json ./
+
+      RUN npm install
+
+      COPY . .
+
+      EXPOSE 3000
+
+      ENTRYPOINT [ "npm" ]
+
+      CMD ["start"]
+
+   Volte ao diretório principal e crie o projeto Django para o Backed:
+        
+       cd ../../
+       django-admin startproject desafio .
+       
+  crie o Dockerfile:
+        
+        vi Dockerfile
       
-       vi Dockerfile
-      
    
-   Conteúdo do Dockerfile da wiki:
+   Conteúdo do Dockerfile da do python:
    
        FROM requarks/wiki:2
        ENV WIKI_ADMIN_EMAIL=seuemail@dominio.com
