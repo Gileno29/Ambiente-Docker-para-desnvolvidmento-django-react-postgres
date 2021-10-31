@@ -70,13 +70,39 @@ Todos os comandos aqui podem ser consultados  na <a href="https://docs.requarks.
     
  <a name="dockerfile"></a>
  *******
+ <h2>Instalando Node JS:</h2>
+     
+    wget http://nodejs.org/dist/v10.19.0/node-v10.19.0.tar.gz
+ 
+    tar xzvf node-v* && cd node-v*
+    
+ Instale os pacotes necessários para copilar o código:
+ 
+    sudo yum install gcc gcc-c++
+ 
+ Copile o código:
+  
+    ./configure
+    make
+    
+    sudo make install
+ 
+ se você digitar:
+  
+    node --version
+    
+ devera ter a seguite resposta:
+ 
+    v10.19.0
+
+ ******
 <h2>Configurando o Dockerfile:</h2>
 
-para esse projeto foi usado 2 Dockerfiles que estão em diretórios diferentes, eles foram criados com as configurações básicas para buildar as imagens que serão executadas no ambiente para subir o serviço, sendo que o Dockerfile da imagem do postgres contém um arquivo .sql que vai executar no entrypoint do serviço um script que cria o banco de dados da apilicação e o usuário e senha.
+para esse projeto foi usado 2 Dockerfiles que estão em diretórios diferentes, eles foram criados com as configurações básicas para buildar as imagens que serão executadas no ambiente para subir o serviço.
 
-   Crie  a estrutura de diretórios:
+   Crie  o diretório:
             
-       mkdir bd-setup && mkdir wiki-setup
+       mkdir react-front 
     
    Dentro do bd-setup crie o arqui init.sql e o Dockerfile:
       
