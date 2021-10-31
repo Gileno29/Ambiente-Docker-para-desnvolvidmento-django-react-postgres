@@ -19,7 +19,7 @@ Você pode optar por fazer o download dos arquivos e buildar a imagens apartir d
 
 
 <ul>
-  <li>Sistema operacional Linux. No projeto foi usado um ambiente controlado, uma VM criada no Virtual Box e usando o SO <a href="https://docs.docker.com/compose/install/">CentOS 7.</a></li>
+  <li>Sistema operacional Linux.Para esse exemplo está sendo usado o SO <a href="https://docs.docker.com/compose/install/">CentOS 7.</a></li>
   <li>Git</li>
   <li>Deve possuir o <a href="https://docs.docker.com/engine/install/centos/">Docker</a> e também o <a href="https://docs.docker.com/engine/install/centos/">Docker-compose</a> para a segunda parte do projeto
 </ul>
