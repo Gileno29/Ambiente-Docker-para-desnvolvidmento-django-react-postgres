@@ -149,14 +149,18 @@ para esse projeto foi usado 2 Dockerfiles que estão em diretórios diferentes, 
    
    Conteúdo do Dockerfile da do python:
    
-       FROM requarks/wiki:2
-       ENV WIKI_ADMIN_EMAIL=seuemail@dominio.com
-       ENV DB_HOST=postgres-db
-       ENV DB_TYPE=postgres
-       ENV DB_PORT=5432
-       ENV DB_USER=wikiuser
-       ENV DB_PASS=wiki1234
-       ENV DB_NAME=wikijs
+      FROM python:3.10
+      WORKDIR /app
+      COPY requirements.txt .
+      RUN pip install -r requirements.txt
+
+      COPY . .
+
+
+
+
+
+
 
  
  
