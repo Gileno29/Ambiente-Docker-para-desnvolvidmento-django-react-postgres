@@ -8,7 +8,7 @@
 <h3>Sobre:</h3>
 
 
-O Wiki.js é um software de documentação que segue o estilo wiki rodando no Node.js e escrito em JavaScript.
+Esse repositorio tem como objetivo documentar o provisionamento de ambiente com Django, React e Postgres utilizando o docker-compose.
 Você pode optar por fazer o download dos arquivos e buildar a imagens apartir dos arquivos, isso está na sesção de [Configuração Dockerfile](#dockerfile) ou seguido todos os passos e fazer manualmente todo o processo.
 
 
