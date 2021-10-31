@@ -1,7 +1,6 @@
 # Ambiente com React+Django+Postegres provisonado com Docker-compose. 
 
-<img src="https://quintagroup.com/cms/technology/Images/docker-compose-button.jpg"/> <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"/> <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node-dot-js&logoColor=white"/> 
-
+<img src="https://quintagroup.com/cms/technology/Images/docker-compose-button.jpg"/>
 
 
 
