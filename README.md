@@ -257,98 +257,42 @@ caso deseje a intalação pode ser feita via docker-compose para facilitar na ho
     
  conteúdo do docker-compose.yml:
  
-      version: "3"
-        services:
-          postgres-db:
-            image: postgres-wiki:latest
+      version: "3.3"
 
-            container_name: postgres-db
+      services:
+        backend:
+          build: .
+          command: python manage.py runserver 0.0.0.0:8000
+          volumes:
+            - .:/app
+          ports:
+            - 8000:8000
+          depends_on:
+            - db
+        db:
+          image: postgres:14
+          environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+          volumes:
+            - postgres_data:/var/lib/postgresql/data/
 
-            restart: unless-stopped
+        frontend:
+          build: ./react-front/front-client
+          ports:
+            - 3000:3000
+          depends_on:
+            - backend
 
-            volumes:
-              - /home/centos/wiki-js-docker/db-setup/init.sql:/docker-entrypoint-initdb.d/init.sql
+          volumes:
+            - ./react-front/front-client:/user/src/app
 
-            environment:
-              - POSTGRES_USER=postgres
-              - POSTGRES_PASSWORD=1234
-
-            ports:
-              - "5353:5432"
-
-            networks: 
-              - wiki-network
-
-          wiki:
-            image: my-wiki-js:latest
-            depends_on:
-              - postgres-db
-
-            networks: 
-              - wiki-network
-
-            restart: unless-stopped
-
-            ports:
-              - "8080:3000"
-
-
-        networks:
-          wiki-network:
-            driver: bridge
+      volumes:
+        postgres_data:
   
  
  
-No docker compose.yml são declaradas as imagens que vão utilizas para o container e também pode ser criado  váriaveis de ambiente, no caso  do service wiki, não precisa declarar as variáveis do BD pois as mesmas já foram associadas no Dockerfile e está sendo usado a build da imagem criada apartir do Dockerfile.
+No docker compose.yml são declaradas as imagens que vão utilizas para o container no caso para a build do serviço de Backend é passado o "." que referencia o Dockerfile que está no mesmo nivel do composer.yml o serviço do db e passado é buildado apartir da imagem do postgres baixada do dockerhub e por ultimo o serviço do front-end que é buildado apartir da imagem que está em outro diretório com seu caminho referenciado.
  
-      version: "3"
-        services:
-          postgres-db:
-            image: postgres-wiki:latest
-
-            container_name: postgres-db
-
-            restart: unless-stopped
-
-            volumes:
-              - /home/centos/wiki-js-docker/db-setup/init.sql:/docker-entrypoint-initdb.d/init.sql
-
-            environment:
-              - POSTGRES_USER=postgres
-              - POSTGRES_PASSWORD=1234
-
-            ports:
-              - "5353:5432"
-
-            networks: 
-              - wiki-network
- 
- 
- nessa primeira parte do arquivo foi declarado a versão do docker-compose utilizada e o primeiro service(Container a ser contruido), foi dado um  nome a ele, foi informado qual imagem vai ser usada para a contrução docontainer e foi passado o parâmetro ` restart: unless-stopped ` para que, se o container parar, o mesmo seja reiniciado. Construimos um volume apontando para o nosso script `init.sql` para que quando o banco inicie crie o BD da aplicação e seu usuário e senha, aqui deixo uma observação, mesmo com script apontado dentro do Dockerfile do BD como o composer gerenciando o banco burla esse script no `docker-entrypoint-initdb.d`, por a necessidade da criação desse volume, passamos o usuário e senha padrão que desejamos para o usuário padrão do BD (Use senha mais seguras em aplicações em produção), estabelecemos o mapeamento entre aporta externa e do container e por último criamos atribuimos uma network ao container.
- 
- 
-
-       wiki:
-            image: my-wiki-js:latest
-            depends_on:
-              - postgres-db
-
-            networks: 
-              - wiki-network
-
-            restart: unless-stopped
-
-            ports:
-              - "8080:3000"
-
-
-        networks:
-          wiki-network:
-            driver: bridge
-  
-  Nessa útima parte do `docker-compose.yml` criamos o segundo service com nome de `wiki` infomamos que ele vai ser dependente de um outro serviço que precisa está funcional para ele poder iniciar, no caso o banco de dados, especificamos isso com o parâmentro `depends_on:- postgres-db` também definimos o parâmetro `restart: unless-stopped` e colocamos o serviço na mesma network que o outro fazemos o mapeamento de portas em  `ports:- "8080:3000"`, por fim criamos a network que atribuimos a ambos os containers em ` networks: wiki-network: driver: bridge`.
-  
-  após o arquivo está devidamente criado, podemos executar o comando `docker-compose up` e os nossos containers estarão criados.
-
 para checar podemos usar os comando da seção [acima](#verificar) 
 
