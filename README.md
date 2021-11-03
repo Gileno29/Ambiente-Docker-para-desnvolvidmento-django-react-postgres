@@ -166,66 +166,9 @@ para esse projeto foi usado 2 Dockerfiles que estão em diretórios diferentes, 
  
   OBS: o arquivo Dockerfile deve ser criado exatamente com essa nomenclatura.
  
- *******
- <h3>Build das imagens  a partir dos Dockerfiles:</h3>
-     
-   acesse os respectivos diretórios para buildar as imagens:
-        
-      cd /db-setup
-      Docker build -t postgres-wiki .
-      
-      cd /wiki-setup
-      Docker build -t my-wiki-js .
-    
-   Você pode checar se as imagens foram criadas com o seguinte comando:
-     
-      docker image ls -a
-      
-   Exemplo de saida do comando:
-    <img src="https://github.com/Gileno29/wiki-js-docker/blob/main/img/dockerimagels.jpg"/>
-   
-   
-      
- *******    
- <h3>Criando os containers Docker:</h3>
  
-   Com a build das imagens prontas pode ser criado os containers, os crie exatamente nessa ordem:
-    
-      docker run -d -p 5432:5432 --name postgres-db -p 5432:5432 -e POSTGRES_PASSWORD=123456  postgres-wiki:latest
       
-      docker run -d -p 8080:3000  --link postgres-db:db --name wiki --restart unless-stopped  my-wiki-js:latest
-   
-   pode ser conferido se os containers estão criados com o comando:
-      
-      docker container ls -a 
-      
-      
-   Exemplo de saída do comando:
-   
-   <img src="https://github.com/Gileno29/wiki-js-docker/blob/main/img/dockercontainerls.jpg"/>
-   
-   <a name="verificar"><a/>
-   Ao final do processo você validar se a aplicação funcinou pelos logs:
-      
-        docker logs -f my-wiki-js
-       
-   A saída do log com a aplicação funcionando será a seguinte:
-   
-   <img src="https://github.com/Gileno29/wiki-js-docker/blob/main/img/servicoup.jpg"/>
-   
-  O serviço pode ser acessado, nesse caso, através do ip da máquina virtual mais a porta que definimos na hora da criação do container. Para uma máquina em uma plataforma de cloud como a azure, por exemplo, pode ser acessado atráves do ip da instância que a azure fornece ou atráves do serviço de dns que os mesmos também possuem.
-
-Exemplo de acesso em uma VM local:
-<img src="https://github.com/Gileno29/wiki-js-docker/blob/main/img/pagina_wiki_js.jpg"/>
-
-<a name="composer"></a>
- *******   
- <h3>instalação utilizando Docker-compose:</h3>
  
-caso deseje a intalação pode ser feita via docker-compose para facilitar na hora de subir os containers e não ter que usar tantos parâmetros em um comando Docker. Os passos a seguir descrevem como subir os containers apartir do docker-compose, o cenário e organização dos diretórios é mesma esse método serve apenas para substituir a inicialização dos containers pelo modo tradicional do docker.
- 
- 
- *******
  <h3>Instalação:</h3>
  
  execute o curl para download da versão mais recente do docker-compose:
