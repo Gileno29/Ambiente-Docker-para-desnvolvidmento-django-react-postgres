@@ -19,9 +19,11 @@ Você pode optar por fazer o download dos arquivos e buildar a imagens apartir d
 
 
 <ul>
-  <li>Sistema operacional Linux.Para esse exemplo está sendo usado o SO <a href="https://www.centos.org/centos-linux/">CentOS 7.</a></li>
+  <li>Sistema operacional Linux. Para esse exemplo está sendo usado o SO <a href="https://www.centos.org/centos-linux/">CentOS 7.</a></li>
   <li>Git</li>
   <li>Deve possuir o <a href="https://docs.docker.com/engine/install/centos/">Docker</a> e também o <a href="https://docs.docker.com/compose/install/">Docker-compose</a> para a segunda parte do projeto
+  <li>Node</li>
+  <li>Python 3</li>
 </ul>
 
 
