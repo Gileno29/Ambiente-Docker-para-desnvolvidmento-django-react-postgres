@@ -113,6 +113,8 @@ para esse projeto foi usado 2 Dockerfiles que estão em diretórios diferentes, 
        create-react-app front-client
 
    Criando o Dockerfile:
+   
+   OBS: o arquivo Dockerfile deve ser criado exatamente com essa nomenclatura.
   
        vi Dockerfille
        
@@ -164,7 +166,7 @@ para esse projeto foi usado 2 Dockerfiles que estão em diretórios diferentes, 
 
  
  
-  OBS: o arquivo Dockerfile deve ser criado exatamente com essa nomenclatura.
+
  
  
       
