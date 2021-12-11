@@ -34,6 +34,8 @@ Você pode optar por fazer o download dos arquivos e buildar a imagens apartir d
 
 [Configuração Dockerfile](#dockerfile)
 
+[instalando o Node](#node)
+
 [Configuração Docker Composer](#composer)
 
 
@@ -70,8 +72,10 @@ Todos os comandos aqui podem ser consultados  na <a href="https://docs.requarks.
   
       sudo yum install docker-ce docker-ce-cli containerd.io
     
- <a name="dockerfile"></a>
+ 
  *******
+ <a name="node"></a>
+
  <h2>Instalando Node JS:</h2>
      
     wget http://nodejs.org/dist/v10.19.0/node-v10.19.0.tar.gz
@@ -99,6 +103,7 @@ Todos os comandos aqui podem ser consultados  na <a href="https://docs.requarks.
 
  ******
 <h2>Configurando o Dockerfile:</h2>
+<a name="dockerfile"></a>
 
 para esse projeto foi usado 2 Dockerfiles que estão em diretórios diferentes, eles foram criados com as configurações básicas para buildar as imagens que serão executadas no ambiente para subir o serviço.
 
