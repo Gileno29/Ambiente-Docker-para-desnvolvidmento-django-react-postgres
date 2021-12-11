@@ -32,9 +32,9 @@ Você pode optar por fazer o download dos arquivos e buildar a imagens apartir d
 
 [Instalação Docker](#docker)
 
-[Configuração Dockerfile](#dockerfile)
-
 [instalando o Node](#node)
+
+[Configuração Dockerfile](#dockerfile)
 
 [Configuração Docker Composer](#composer)
 
@@ -202,6 +202,7 @@ para esse projeto foi usado 2 Dockerfiles que estão em diretórios diferentes, 
  
  ******* 
  <h3>configuração do docker-compose.yml:</h3>
+ <a name="composer"></a>
  
  na raiz do projeto crie um arquivo chamado docker-compose.yml e faça as configurações do ambiente nele:
  
