@@ -9,7 +9,7 @@
 
 
 Esse repositorio tem como objetivo documentar o provisionamento de ambiente com Django, React e Postgres utilizando o docker-compose.
-Você pode optar por fazer o download dos arquivos e buildar a imagens apartir dos arquivos, isso está na sesção de [Configuração Dockerfile](#dockerfile) ou seguido todos os passos e fazer manualmente todo o processo.
+Você pode optar por fazer o download dos arquivos e buildar a imagens apartir dos arquivos, isso está na seção de [Configuração Dockerfile](#dockerfile) ou seguido todos os passos e fazer manualmente todo o processo.
 
 
 <div id='requerimentos'/>
